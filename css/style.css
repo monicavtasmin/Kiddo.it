@@ -1,0 +1,149 @@
+/* external style for navigation bar */
+/* this style will be applied to all pages that have navigation bars. */
+/* instead of writing the same code (reduplication), I made it on external CSS so it can be reused  */
+/* to all */
+* {
+  /* the space between the content and the border. */
+    padding: 0;
+    text-decoration: none;
+    /* this is used to remove bullets from <ul> */
+    list-style-type: none;    
+    /* used to change calculations in measuring element width */
+    box-sizing: border-box;
+  }
+
+  /* style to apply to the contents in body. I'm using Space Mono font */
+  body {
+    margin: 0;
+    font-family: 'Space Mono', monospace;
+  }
+
+    /* the style of the logo that is located on the right corner. I have prepared the
+  logo myself. */
+  label.logo {
+    /* to make a little space, so the logo won't stick/lean too much towards the end of the page    margin-left: 1%; */
+    margin-left: 1%;
+    background: url("../../images/kids.png");
+    font-size: 120px;
+    line-height: 180px;
+    padding: 0 100px;
+    cursor: pointer;
+  }
+
+  /* style for the navbar's background; I'm using the GIF that I downloaded online for the 
+  background to sync the theme of this app. The height of the navbar is 200px so that it 
+  can store the menu, logo, and search bar */
+  nav {
+    background-image: url("../../images/bg.gif");
+    height: 200px;
+  }
+
+
+  /* style for anchor element in navigation bar */
+  nav a {
+    /* so that the text in the menu doesn't have the underline thing */
+    text-decoration: none;
+    padding: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    color: white;
+    /* button radius */
+    border-radius: 3px;
+  }
+
+  /* As we hover the button, it will change the box and text colors */
+  .navbar,
+  a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* the menu is treated as unordered list, but the bullets will be removed since navbar doesn't need list markers */
+  /* the menu on the navbar will be on the right; therefore the float should be set on right */
+  nav ul {
+    /* this is used to remove bullets from <ul> */
+    list-style-type: none;  
+    float: right;
+    margin-right: 15px;
+  }
+  
+  /* li: display items in unordered and ordered lists. */
+  nav ul li {
+    /* to make the menu goes horizontal instead of vertical */
+    display: inline-block;
+    line-height: 150px;
+    margin: 0;
+  }
+  
+  /* Internal CSS for active class (the class where the user is at at the moment) */
+  .navbar,
+  a.active {
+    background-color: darkslateblue;
+    color: white;
+  }
+  
+/* THIS SECTION IS FOR HAMBURGER MENU SYTYLE AND HIDING */
+  /* to toggle the hamburger menu, we are using checkbutton. Then, we will use the symbol from online resource */
+  .checkbtn {
+    /* this will be hiden because we only want to see the hamburger menu */
+    display: none;
+    line-height: 170px;
+    margin-right: 50px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    float: right;
+  }
+  
+  /* so that the user can click on the hamburger menu, not the checkbox (hidden) */
+  #check {
+    display: none;
+  }
+/* THE END OF THE HAMBURGER MENU STYLE AND HIDINGS */
+
+  /* MEDIA QUERY; important components for making responsive web layouts */
+  /* all the styles above are for screens with maximum width of 1000px. Above 1000px, 
+  the style should also change to make it responsive */
+  @media (max-width: 1000px) {
+    /* the hamburger menu to be displayed as the screen size reaches above 1000px */
+    .checkbtn {
+      display: block;
+    }
+  
+    /* as the user clicks the hamburger menu, the menu will be displayed vertically */
+    /* style for vertical stacked menu  */
+    ul {
+      position: fixed;
+      width: 100%;
+      background-image: url("../../images/bg.gif");
+      top: 181px;
+      left: -100%;
+      text-align: center;
+    }
+  
+    /* the menu to be stacked vertically instead of horizontally*/
+    nav ul li {
+      display: block;
+      margin: 50px 0;
+      line-height: 10px;
+    }
+  
+    /* the font size of the menu  */
+    nav a {
+      font-size: 20px;
+    }
+  
+    /* check represented by checked and ul that share the same parent in the document tree. . resource: geekstogeeks */
+    #check:checked~ul {
+      left: 0;
+    }
+  
+  }
+  
+  /* the style for the search bar container that is located on middle-top left */
+  .boxContainer {
+    margin: auto;
+    margin-top: -1%;
+    position: unset;
+    margin-left: 1%;
+  }  

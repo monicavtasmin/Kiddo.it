@@ -1,0 +1,134 @@
+<html>
+
+  <head>
+    <!-- the title of the page that will be displayed on the tab -->
+    <title>Let's Play!!</title>
+
+    <!--  to reset the size and scale (zoom) of the web. This tag is needed to make the web page responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- importing the external CSS to minimize code reduplication  -->
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <!-- importing the magnifying glass as search symbol from googleapis  -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- importing style from cdnjs. This is for the hamburger icon Reference: w3schools -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    
+    <style>
+    
+    /* Let's Play & Learn button */
+    .play {
+      display: flex;
+      top: 50%;
+      left: 50%;
+      right: 50%;
+      background-color:#546271;
+      padding: 20px 15px;
+      margin: auto;
+      transition: 0.5s;
+      border-radius: 20px;
+      color: #c6f659;
+      font-size: 20px;
+      text-decoration: none;
+      cursor: pointer;
+      margin-top: 120px;
+    }
+
+    /* as we hover the button, the color will turn to red */
+    button:hover{
+      color: red;
+    }
+
+    /* style to apply to the contents in body. I'm using Space Mono font */
+    body {
+      background-image: url("../../images/bg.gif");
+      padding: 200px;
+      padding-top: 40px;
+      font-family: 'Space Mono', monospace;
+    }
+
+    /* the style of the component */
+    #app {
+      background: #B3BECF;
+      border-radius: 10px;
+      padding: 50px;
+      margin-top: 120px;
+    }
+
+    /* text styles */
+    h3 {
+      margin-left: 50px;
+    }
+
+    p{
+      margin-top: 10px;
+    }
+
+    </style>
+    <!-- the title of the page that will be displayed on the tab -->
+    <title>Let's learn!!</title>
+    
+    <!-- imports vue js script to implement Vue.js in the code -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+  </head>
+
+  <!-- body section -->
+
+  <body>
+
+    <!-- navigation bar -->
+    <nav>
+      <!-- checkbox input type but hidden (as explained in the CSS section) -->
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <!-- hamburger menu button-->
+        <i class="fas fa-bars"></i>
+      </label>
+
+      <!-- the logo of this app -->
+      <a href="FrontPage.html" style="background-color:transparent;"><label class="logo"></label></a>
+
+      <!-- the menu contents -->
+      <ul>
+        <!-- hyperlink to the other page -->
+        <li><a href="Index.html">Home</a></li>
+        
+        <!-- Let's learn is currently the active class; user is currently at this page -->
+        <li><a class="active" href="#">Let's Learn</a></li>
+
+        <!-- hyperlink to the other page -->
+        <li><a href="TutorList.html">Tutor List</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Declarative rendering -->
+    <div id="app">
+      <center>
+        <!-- Handling user input, form input bindings; after the user hits the return button, their input will be shown-->
+        <h1>
+          {{hello}}
+        </h1>
+     <br>
+     <!-- Lazy modifier: the message will be updated if ONLY the user clicked the return key -->
+     <input placeholder="click enter" v-model.lazy="message">
+    </center>
+    <!-- asks the user this -->
+    <!-- convert user's input to uppercase -->
+    <h3>You are feeling: {{ message | capital }} </h3>
+    </div>
+
+    <center>
+        <!-- redirects user to activities page as they clicked the Let's Play & Learn! button -->
+        <form action="activities.html">
+        <button class="play"> Let's Play & Learn!</button> <br>
+    </center>
+    
+    <!-- importing script from js file -->
+    <script src="../../js/ask.js"></script>
+  </body>
+
+</html>

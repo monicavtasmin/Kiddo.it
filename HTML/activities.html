@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <!-- the title of the page that will be displayed on the tab -->
+    <title>Student's Page</title>
+
+    <!--  to reset the size and scale (zoom) of the web. This tag is needed to make the web page responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- importing the external CSS to minimize code reduplication  -->
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+
+    <!-- importing the magnifying glass as search symbol from googleapis  -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- importing style from cdnjs. This is for the hamburger icon Reference: w3schools -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <!-- imports vue js script to implement Vue.js in the code -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <!-- Inline CSS -->
+    <style>
+      /* style to apply to the contents in body. I'm using Space Mono font */
+      body {
+        background-color: aliceblue;
+      }
+
+      /* the font that will be used in this page is Space Mono */
+      #app {
+        font-family: 'Space Mono', monospace;
+      }
+
+      /* the button for each section style */
+      .section-button {
+        border: none;
+        outline: none;
+        padding: 20px 60px;
+        background-color: white;
+        cursor: pointer;
+        margin-left: 10px;
+        margin-top: 50px;
+      }
+
+      /* As we hover the button, it will change the box and text colors */
+      .section-button:hover {
+        background: #B3BECF;
+      }
+
+      /* Internal CSS for active class button (the class where the user is at at the moment) */
+      .section-button.active {
+        background: #c6f659;
+      }
+
+      /* division style */
+      div {
+        margin-left: 10px;
+        margin-top: 20px;
+      }
+
+      /* button's font */
+      button {
+        font-family: 'Space Mono', monospace;
+      }
+
+    </style>
+  </head>
+
+  <!-- body section -->
+  <body>
+
+  <!-- navigation bar -->
+    <nav>
+      <!-- checkbox input type but hidden (as explained in the CSS section) -->
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <!-- hamburger menu button-->
+        <i class="fas fa-bars"></i>
+      </label>
+
+      <!-- the logo of this app -->
+      <a href="FrontPage.html" style="background-color:transparent;"><label class="logo"></label></a>
+
+      <!-- the menu contents -->
+      <ul>
+        <!-- hyperlink to the other page -->
+        <li><a href="Index.html">Home</a></li>
+        
+        <!-- Let's learn is currently the active class; user is currently at this page -->
+        <li><a class="active" href="TutorList.html">Let's Learn</a></li>
+
+        <!-- hyperlink to the other page -->
+        <li><a href="TutorList.html">Tutor List</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+    </nav>
+    <!-- the end of the navbar -->
+
+    <!-- vue implementation -->
+    <div id="app">
+
+      <!-- centered contents -->
+      <center>
+
+        <!-- to make the sections on each button shows the category name (e.g 4 to 6 years old)  -->
+        <!-- this is to show Active class' contents and hide other contents -->
+        <!-- I learned this concept via Vue.js website and YouTube Videos (https://www.youtube.com/watch?v=2NXCytskC2s) -->
+        <button v-for="section in sections" 
+        v-bind:key="section" v-bind:class="['section-button', { active: active === section }]" 
+        v-on:click="active = section">{{ section }}</button>
+
+        <!-- we're using v-bind to show the contents of each section; differentiated  -->
+        <component v-bind:is="activeTab" class="section"></component>
+      </center>
+      <!-- the end of centered contents -->
+
+    </div>
+  </body>
+  <!-- importing script from js file -->
+ <script src="../../js/dynamic.js"></script>
+
+</html>

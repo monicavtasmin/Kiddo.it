@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <!-- the title of the page that will be displayed on the tab -->
+    <title>Student Hompeage</title>
+
+    <!--  to reset the size and scale (zoom) of the web. This tag is needed to make the web page responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- importing the magnifying glass as search symbol from googleapis  -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- importing style from cdnjs. This is for the hamburger icon Reference: w3schools -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/0.8.6/vue.min.js"></script>
+
+
+    <!-- importing the external CSS to minimize code reduplication  -->
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <style>
+      
+      /* division style */
+      .header {
+        width: 100%;
+        background-color: #747cac;
+      }
+
+      /* highlight color */
+      mark {
+        background-color: #080404;
+        color: white;
+      }
+
+      /* cursor becomes pointer as we hover the images */
+      img {
+        cursor: pointer;
+      }
+
+      /* comment section's CSS */
+      p {
+        background-color:rgb(208, 208, 208);
+        width: 275px;
+        padding: 10px; 
+        border-radius: 10px;       
+      }
+
+      h4{
+        background-color:rgb(172, 206, 238);
+        width: 275px;
+        padding: 20px; 
+        border-radius: 20px; 
+      }
+
+      /* the style for the name box for user input */
+      input{
+        border: 1px solid rgb(199, 199, 199);
+        border-radius: 5px;
+        padding: 7px;
+        padding-left: 10px;
+        padding-top: 5px;
+      }
+
+      *{
+        font-family: 'Space Mono', monospace;
+        padding: 0;
+        margin: 0;
+      }
+
+      #commentsection{
+        margin: 20px 0 0 0;
+        margin-right: 10px;
+        margin-left: 10px;
+        background-color: #556272;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* div style */
+      .comment-sec{
+        display:grid;
+        margin: auto;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        margin-left: 10px;
+      }
+
+      /* the style for the comment box for user input */
+      textarea{
+        margin-top: 7px;
+        width: 100%;
+        border: 1px solid rgb(199, 199, 199);
+        border-radius: 12px;
+        height: 100px;
+        padding-left: 10px;
+        padding-top: 5px;
+      }
+
+      /* the style for the post a comment button */
+      button{
+        background: rgb(209, 0, 0);
+        color:white;
+        padding: 7px;
+        cursor: pointer;
+        border-radius: 20px;
+        margin-top: 10px;
+      }
+
+      /* the style for the names in the comment section */
+      .name{
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- navigation bar -->
+    <nav>
+      <!-- checkbox input type but hidden (as explained in the CSS section) -->
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <!-- hamburger menu button-->
+        <i class="fas fa-bars"></i>
+      </label>
+
+      <!-- the logo of this app -->
+      <a href="FrontPage.html" style="background-color:transparent;"><label class="logo"></label></a>
+
+      <!-- the menu contents -->
+      <ul>
+        <!-- Home is the active class because this is the Homepage -->
+        <li><a class="active" href="#">Home</a></li>
+        <!-- hyperlink to the other page -->
+        <li><a href="letslearn.html">Let's Learn</a></li>
+        <li><a href="TutorList.html">Tutor List</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    <!-- the end of the navbar -->
+
+    </nav>
+    
+    <!-- content of student's homepage -->
+    <div class="header"> <br>
+      <!-- for the user to go back to the first page if they change their mind -->
+      <form action="FrontPage.html">
+        <input type="submit" value="Back" style="margin-left: 10px; cursor: pointer;">
+      </form> 
+
+
+      <!-- centered content -->
+      <center>
+        <br>
+        <!-- welcome text  -->
+        <!-- highlighted text -->
+    <!--Passing props-->
+    <div id="app">
+      <post :title="title" :definition="definition" :content="content" :positive="positive" :negative="negative" :non="non"></post>
+    </div>
+        <!-- binding -->
+        <template id="math">
+          <center>
+          <h1><mark>{{ title }}</mark></h1><br>
+          <h3>{{ definition }}</h3>
+          <br>
+          </center>
+        </template>
+        </center>
+
+      <!-- centered content -->      
+      <center>
+        <!-- import images from local disk -->
+        <a href="activities.html"><img src="../../images/1new.jpg" width="300" height="300" style="margin-right:10px; margin-bottom: 10px;"></a>
+        <a href="TeacherIndex.html"><img src="../../images/2new.png" width="300" height="300"style="margin-bottom:10px;"></a>
+      </center>
+
+      <div class="header">
+        <center>
+        <!-- import images from local disk -->          
+        <a href="activities.html"><img src="../../images/gif.gif" width="300" height="175"style="margin-right:10px; margin-bottom: 10px"></a>
+        <a href="https://www.education.vic.gov.au/parents/additional-needs/Pages/disability-early-childhood-additional-needs-support.aspx"><img src="../../images/gov.jpeg" width="300" height="175" style="margin-bottom:10px;"></a>
+        </center>
+        <br>
+      </div>
+
+      <!-- give space -->
+      <br>
+        </div>
+      </div>
+    </div>      
+    <center><h1 style="margin-top: 10px;"><mark>Comment Section</mark></h1></center>
+    <!-- Declarative rendering -->
+    <div id="commentsection">
+      <div class="comment-sec" >
+      
+      <!-- label for user inputs -->
+        <label>
+          <input type="text" v-model="name" id="name" placeholder="Name" style="margin-top: 10px;">
+          <textarea type="text" v-model="comment" placeholder="Please post a comment"></textarea>
+        </label>
+        
+        <center>
+          <!-- button to click on if the user wants to post a comment -->
+          <button v-on="click: postComment">Post a comment</button>
+        </center>
+      </div>
+      <!-- to allow the user to comment multiple times -->
+      <div v-repeat="comments" class="comment-sec">
+      
+      <center>
+          <!-- the name of the user will be displayed -->
+        <h4 marg class="name"> Name: {{name}}</h4>
+        <!-- to upate the data (the available comments) -->
+        <p v-html="usercomment"></p><br> 
+      </center>
+      </div>
+
+  </body>
+  <script>
+    Vue.component('post', {
+      template: '#math',
+      // props
+      props: ['title', 'definition']
+});
+
+    var vm = new Vue({
+    // pass the object
+      el: '#app',
+      // we want to define the message and data here
+      data: {
+        title: 'W e l c o m e ✨',
+        definition: 'Your Journey Starts here ',
+      }
+    });
+  </script>
+  <script src="../../js/test.js"></script>
+
+</html>

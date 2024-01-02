@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Internal CSS */
+
+      /* this is the style for the first button; users that wants to connect as STUDENT */
+      .reg {
+        display: flex;
+        top: 50%;
+        left: 50%;
+        right: 50%;
+        background-color: #0C154F;
+        padding: 20px 15px;
+        margin: auto;
+        /* font and button will change their color after 0.5s hovering */
+        transition: 0.5s;
+        border-radius: 20px;
+        color: white;
+        font-size: 20px;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      /* if the user hovers their cursor to the Connect as STUDENT, the opacity will change (lighter)*/
+      .reg:hover {
+        opacity: 0.7;
+      }
+
+      /* style to apply to the contents in body. I'm using Space Mono font */
+      body {
+        background-image: url("../../images/bg.gif");
+        /* google font */
+        font-family: 'Space Mono', monospace;
+      }
+
+      /* the buttons' style */
+      button {
+        /* google font */
+        font-family: 'Space Mono', monospace;
+      }
+
+      /* set the distance between one element to another element */
+      .marginauto {
+        margin: 100px auto 20px;
+        display: block;
+      }
+
+      /* responsive div */
+      .responsive {
+        width: 100%;
+        height: auto;
+      }
+
+      /* as we hover the text, the color will turn to red */
+      p,
+      a {
+        color: silver;
+        text-decoration: none;
+      }
+
+      /* as we hover the connect as STUDENT or TEACHER buttons, the font color will turn to red */
+      .p,
+      a:hover {
+        color: red;
+        transition: 0.5s;
+      }
+
+      /* as we hover the connect as STUDENT or TEACHER buttons, the button color will turn to red */
+      button:hover {
+        color: red;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <!-- division -->
+    <div>
+      <!-- imports image from local disk -->
+      <img class="marginauto" src="../../images/bg.png" alt="centered image" class="responsive" />
+      <br>
+
+      <!-- hyperlink; as the user clicks the STUDENT button, they will automatically redirected to index.html for students -->
+      <form action="index.html">
+        <button class="reg"> Connect as STUDENT</button> <br>
+        <center>
+          <!-- hyperlink; as the user clicks the TEACHER button, they will automatically redirected to index.html for students -->
+          <p><a href="TeacherIndex.html">Connect as TEACHER</a></p>
+        </center>
+      </form>
+
+    </div>
+  </body>
+
+</html>

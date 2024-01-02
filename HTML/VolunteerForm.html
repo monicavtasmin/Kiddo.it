@@ -1,0 +1,200 @@
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <!-- the title of the page that will be displayed on the tab -->
+    <title>Volunteer Form</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+      /* these are the internal style for the form */
+      body {
+        background-image: url("../../images/bg.gif");
+        font-family: 'Space Mono', monospace;
+      }
+
+      p,
+      select,
+      label {
+        margin-left: 20px;
+        border-top: black;
+        margin-top: 20px;
+      }
+
+      select,
+      input {
+        color: black;
+
+      }
+
+      p {
+        padding-top: 10px;
+      }
+
+      /* cs style for the box of the regis page */
+      .box {
+        width: 500px;
+        height: 550px;
+        background-color: #FFFFFF;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        border-radius: 25px;
+        margin: auto;
+      }
+
+      /* style for sign up button for user */
+      button {
+        font-family: 'Space Mono', monospace;
+        border-radius: 25px;
+        color: #fff;
+        background: #2f2a64;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-family: 'Space Mono', monospace;
+        margin-left: 35%;
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      /* drop down CSS style */
+      select,
+      option {
+        font-family: 'Space Mono', monospace;
+        border: none;
+        width: 80%;
+        color: #263238;
+        font-size: 12px;
+        background: #ebebeb;
+        padding: 15px 20px;
+        border-radius: 25px;
+        box-sizing: border-box;
+        text-align: left;
+        margin-bottom: 28px;
+        cursor: pointer;
+      }
+
+      input {
+        font-family: 'Space Mono', monospace;
+        border: none;
+        color: #263238;
+        font-size: 12px;
+        background: #ebebeb;
+        padding: 15px 20px;
+        border-radius: 25px;
+        box-sizing: border-box;
+        cursor: pointer;
+      }
+
+    </style>
+  </head>
+
+  <body>
+
+    <!-- for the user to go back to the first page if they change their mind -->
+    <form action="TeacherIndex.html">
+      <input type="submit" value="Back" style="border-radius: 5px; padding: 5 5px;">
+    </form>
+    <!-- centered image; imports images from local disk -->
+    <center><img src="../../images/kids.png"></center>
+
+    <div class="box">
+      <center>
+        <!-- title of the form, centered -->
+        <h2 style="padding-top: 40px; font-size: 25px;">TEACHER'S VOLUNTEER FORM</h2>
+      </center>
+
+
+      <!-- Form for the teacher -->
+      <form id="userform">
+        <p>
+          <!-- the teacher must enter their email -->
+          <label style="margin-left: 10px; margin: 0 40px;" for="email">e-mail address</label><br><br>
+          <!-- input here; the placeholder will tell users what should they input -->
+          <!-- uses v-model -->
+          <input type="email" name="email" id="email" v-model="email" placeholder="Enter an e-mail" style="margin-left: 10px; margin: 0 40px; width: 80%;">
+        </p>
+
+        <p>
+          <!-- user should input their full name -->
+          <label style="margin-left: 10px; margin: 0 40px;" for="name">Teacher's Full name<label><br><br>
+              <!-- input here; the placeholder will tell users what should they input -->
+              <!-- uses v-model -->
+              <input type="text" name="name" id="name" v-model="name" placeholder="Enter name" style="margin-left: 10px; margin: 0 40px; width: 80%;">
+        </p><br>
+
+        <label style="margin-left: 10px; margin: 0 60px;" for="qualification">Qualification</label><br><br>
+        <!-- uses v-model -->
+        <select v-model="selected" name="qualification" id="qualification" v-model="qualification" style="margin-left: 15px; margin: 0 60px; width: 77%;">
+          <!-- choices are: -->
+          <option value="">Please select one of your qualifications</option>
+          <option>Mathematics</option>
+          <option>English</option>
+          <option>Social Studies</option>
+          <option>Science</option>
+          <option>Reading & Writing</option>
+        </select>
+
+        <!-- inline css for the checkbox -->
+        <input type="checkbox" id="yes" style="margin-top: 20px; margin-left: 60px;">
+
+        <!-- user should check the button as they read the requirements -->
+        <label for="yes">I have read the terms and coditions</label><br>
+
+
+        <br><br>
+
+
+        <!-- button for the user to click  -->
+        <!-- user will be redirected to another page -->
+        <center>
+          <button style="margin: 0 39px" v-on:click="checkInput" href="requirement.html">Submit</button>
+        </center>
+      </form>
+    </div>
+    <br>
+
+    <script>
+      // Using V-model for handling user inputs
+      var form = new Vue({
+        // pass the object
+        el: "#userform",
+        // function that returns an object
+        data: {
+          email: '',
+          username: '',
+          selected: '',
+          yes: false
+        },
+        methods: {
+          checkInput: function() {
+            // what the user needs to input
+            var str = '';
+
+            if (this.email) {
+              str = str + "email: " + this.email;
+            }
+
+            if (this.username) {
+              str = str + "username: " + this.username;
+            }
+
+            if (this.selected) {
+              str = str + "selected: " + this.selected;
+            }
+
+            if (str) {
+              alert("Submitted! Thanks for your participation");
+            }
+
+            // if the information filled by the user is not complete
+            else {
+              alert("Please input required info")
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

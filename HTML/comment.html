@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <!-- the title of the page that will be displayed on the tab -->
+    <title>Student Hompeage</title>
+
+    <!--  to reset the size and scale (zoom) of the web. This tag is needed to make the web page responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- importing the magnifying glass as search symbol from googleapis  -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- importing style from cdnjs. This is for the hamburger icon Reference: w3schools -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/0.8.6/vue.min.js"></script>
+
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+    <!-- importing the external CSS to minimize code reduplication  -->
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+      /* div for the contact; */
+      .contact,
+      .container {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+        margin-top: 50px;
+        text-align: left;
+        font-family: 'Space Mono', monospace;
+      }
+
+      #app {
+        margin: 50px auto;
+        text-align: center;
+        font-family: 'Space Mono', monospace;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        cursor: pointer;
+        font-family: 'Space Mono', monospace;
+        
+      }
+
+      /* MEDIA QUERY; important components for making responsive web layouts */
+      /* all the styles above are for screens with maximum width of 700px. Above 700px, 
+    the style should also change to make it responsive */
+      @media screen and (max-width: 700px) {
+
+        /* so the display won't be stacked too much and confuses users with mobile device */
+        .contact {
+          display: block;
+          width: 80%;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        #app {
+          text-align: center;
+        }
+      }
+
+    </style>
+  </head>
+
+  <body>
+    
+
+    <!-- navigation bar -->
+    <nav>
+      <!-- checkbox input type but hidden (as explained in the CSS section) -->
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <!-- hamburger menu button-->
+        <i class="fas fa-bars"></i>
+      </label>
+
+      <!-- the logo of this app -->
+      <a href="FrontPage.html" style="background-color:transparent;"><label class="logo"></label></a>
+
+      <!-- the menu contents -->
+      <ul>
+        <!-- hyperlink to the other page -->
+        <li><a href="index.html">Home</a></li>
+        <li><a href="letslearn.html">Let's Learn</a></li>
+        <li><a href="TutorList.html">Tutor List</a></li>
+        <!-- Contact info is currently the active class; user is currently at this page -->
+        <li><a class="active" href="#">Contact</a></li>
+      </ul>
+    <!-- the end of the navbar -->
+    </nav>
+
+
+    <div id="app">
+        <h1>Contact Information</h1>
+        <router-link to="/one"> CEO</router-link> |
+        <router-link to="/two"> Query</router-link>
+        <div id="content">
+          <router-view></router-view>
+        </div>
+      </div>
+      <template id="create-template">
+        <div class="container">
+          <form>
+            <label for="fname">e-mail</label>
+            <input type="email" id="email" name="email" placeholder="Please enter your e-mail address">
+  
+            <label for="query">Query</label>
+            <select id="query" name="query">
+              <option value="complaint">Complaint</option>
+              <option value="question">Question</option>
+              <option value="suggestion">Suggestion</option>
+              <option value="other">Other</option>
+            </select>
+  
+            <label for="comments">Comments</label>
+            <textarea id="comments" name="comments" placeholder="Please enter your query" style="height:200px"></textarea>
+            <center><button style="width: 10%; border-radius: 30px; font-family: 'Courier New', Courier, monospace; background-color: darkslateblue; color: white; font-size: 12px;padding: 10px; cursor: pointer;"
+             onclick="submitComment()">Submit</button></center>
+  
+          </form>
+        </div>
+      </template>
+	<!-- importing js script (vue) -->
+    <script src="../../js/main.js"></script>
+
+	<!-- using javascript for the pop-up windows -->
+    <script>
+	// this is the function to submit the query
+      function submitComment() {
+		// the user can choose whether they want to proceed or cancel
+		// if the user clicks "ok", then they will see the pop-up message that the query has been submitted
+		if (confirm("Submit Query?")){
+        	alert("Query Submitted");
+		}
+        document.getElementById("submitComment").innerHTML;
+      }
+
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,133 @@
+<html>
+
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+      body {
+        padding-left: 5px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 20px;
+        color: white;
+        background-image: url("../../images/bg.gif");
+        padding-top: 10px;
+      }
+
+      h1, p{
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <!-- for the user to go back to the first page if they change their mind -->
+    <form action="activities.html">
+        <input type="submit" value="Back">
+      </form> 
+
+    <div id="custom-event">
+      <center>
+      <h1>Add the following numbers</h1>
+      <p>Click the following numbers</p>
+      <!-- custom event to add numbers (add-button) -->
+      <add-button style="border-radius: 10px; font-size: 20px; font-family: 'Courier New', Courier, monospace; cursor: pointer;" v-on:add="addNum"></add-button>
+      <h1>+</h1>
+      <add-button style="border-radius: 10px; font-size: 20px; font-family: 'Courier New', Courier, monospace; cursor: pointer;" v-on:add="addNum"></add-button>
+      <h1>=</h1>
+      <p>{{ total }}</p>
+      </center>
+    </div>
+
+    <hr>
+
+    <div id="computed">
+      <center>
+
+        <!-- the title of the module-->
+        <h1>Let's learn about subtraction! </h1>
+        <p>A = 0</p>
+
+        <!--Click Event-->
+        <!--button for the user to click on-->
+        <!--the number will be deremented-->
+        <button v-on:click="a--">-1</button>
+        <p>B = 0 </p>
+
+        <!--Click Event-->
+        <!--button for the user to click on-->
+        <!--the number will be deremented-->
+        <button v-on:click="b--">-1</button>
+
+
+        <p>C = 1</p>
+
+        <!--binds the current value of a, b, and c-->
+        <p> A now = {{ a }} <br> B now = {{ b }} <br> C now = {{ c }} </p>
+
+
+        <p>C - A = {{ resultA }} <br> C - B = {{ resultB }}</p>
+      </center>
+
+
+    </div>
+    <script>
+      // global Registration
+      Vue.component('add-button', {
+        template: '<button v-on:click="add">{{ counter }}</button>',
+        data: function () {
+          return {
+            // starts from zero
+            counter: 0
+          }
+        },
+        methods: {
+          add: function () {
+            // $emit to pass the data from the child component back to the parent
+            this.counter += 1
+            this.$emit('add')
+          }
+        },
+      })
+      new Vue({
+        el: '#custom-event',
+        data: {
+          total: 0
+        },
+        methods: {
+          addNum: function () {
+            // increment by one as the user clicks the button
+            this.total += 1
+          }
+        }
+      })
+
+      new Vue({
+        el: '#computed',
+        // define the variables
+        data: {
+          c: 1,
+          a: 0,
+          b: 0
+        },
+        // make the object
+        computed: {
+          resultA: function() {
+            console.log('resultA');
+            // calculation
+            return this.c - this.a;
+
+          },
+          resultB: function() {
+            console.log('resultB');
+            // calculation
+            return this.c - this.b;
+          }
+        }
+      });
+
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <!-- imports vue js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <style>
+      /* the style of the page */
+      /* to find the button on three quarters of the page */
+      html {
+        height: 75%;
+        background: url("../../images/bg.gif");
+      }
+
+      /* style of the body */
+      body {
+        min-height: 100%;
+        margin: 0;
+        display: grid;
+        font-family: 'Space Mono', monospace;
+      }
+
+      /* style of the clickable button */
+      .button {
+        font-family: 'Space Mono', monospace;
+        font-size: 20px;
+        padding: 15px;
+        border-radius: 10px;
+        cursor: pointer;
+        color: #FFF;
+        border: black;
+        background-color: darkslateblue;
+      }
+
+      /* style of the modal */
+      .popup {
+        border-color: black;
+        position: absolute;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        text-align: center;
+        width: 350px;
+        height: 150px;
+        max-width: 22em;
+        padding: 2rem;
+        border-radius: 10px;
+        background: #FFF;
+        transform: none;
+      }
+
+      /* style of the background of the modal */
+      .bg {
+        height: 100%;
+        position: absolute;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: black;
+        cursor: pointer;
+      }
+
+      /* CSS style for transitioning single component */
+      /* source: vue.js site */
+      /* transition as we click the 'click me' button */
+      .fade-enter-active,
+      .fade-leave-active {
+        transition: opacity 1s;
+      }
+
+      /* transition as we click the 'ok' button */      
+      .fade-enter,
+      .fade-leave-to{
+        opacity: 0.1;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <!-- for the user to go back to the first page if they change their mind -->
+    <form action="TeacherIndex.html">
+      <input type="submit" value="Back" style="border-radius: 5px; padding: 5 5px; text-align: left; margin-left: 10px; margin-top: 10px;">
+     </form>
+    <div id="app">
+      <!-- clickable button to be set true (shows to the user) -->
+      <center><button @click="Pops = true" class="button">click me!</button></center>
+
+      <!-- transition event, fade -->
+      <transition name="fade" appear>
+        
+        <!-- false means hide from user -->
+        <!-- this only be shown as the user clicks the Click me! button -->
+        <div class="bg" v-if="Pops" @click="Pops = false"></div>
+      </transition>
+
+      <!-- transition event, pop -->
+      <transition name="pop" appear>
+        <div class="popup" role="dialog" v-if="Pops">
+
+          <!-- message as the user clicks the click me button -->
+          <h3>You guys have done such a great job!</h3>
+          <input type="id" name="text" placeholder="Credential ID">
+          <a href="../../pdf/certificate.pdf"><h5>click here to print your certiciate</h5></a>
+        </div>
+      </transition>
+
+      
+    </div>
+  </body>
+  
+  <!-- vue js -->
+    <script>
+      new Vue({
+        el: '#app',
+
+        // State with data
+        // the popup not to be shown before the user clicks the button
+        data() {
+          return {
+            Pops: false
+          }
+        }
+      });
+
+    </script>
+</html>

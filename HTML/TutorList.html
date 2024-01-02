@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+
+    <!-- the title of the page that will be displayed on the tab -->
+    <title>Teacher's Page</title>
+    <!--  to reset the size and scale (zoom) of the web. This tag is needed to make the web page responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- importing the magnifying glass as search symbol from googleapis  -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- importing style from cdnjs. This is for the hamburger icon Reference: w3schools -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-simple-search-dropdown@latest/dist/vue-simple-search-dropdown.min.js"></script>
+
+    <!-- importing the external CSS to minimize code reduplication  -->
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <style>
+      /* the style of this page */
+      *{
+        font-family: 'Space Mono', monospace;
+        
+      }
+      body {
+        line-height: 20px;
+      }
+
+      h4,p {
+        margin: 0 30px;
+        margin-bottom: 15px;
+      }
+
+      /* the style of the container  */
+      .background {
+        width: 500px;
+        height: 450px;
+        border: 1px outset black;
+        background-color: rgb(237, 237, 237);
+        margin-bottom: 10px;
+        border-radius: 25px;
+        margin: auto;
+        padding-top: 10px;
+      }
+
+      /* the style of the dropdown menu */
+      .menu{
+        margin-left: auto;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+
+    <!-- navigation bar -->
+    <nav>
+      <!-- checkbox input type but hidden (as explained in the CSS section) -->
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <!-- hamburger menu button-->
+        <i class="fas fa-bars"></i>
+      </label>
+      <!-- the logo of this app -->
+      <a href="FrontPage.html" style="background-color:transparent;"><label class="logo"></label></a>
+
+      <!-- the menu contents -->
+      <ul>
+        <!-- hyperlink to the other page -->
+        <li><a href="index.html">Home</a></li>
+        <!-- hyperlink to the other page -->
+        <li><a href="letslearn.html">Let's Learn</a></li>
+        <!-- Tutor List is the active class because this is the Homepage -->
+        <li><a class="active" href="TutorList.html">Tutor List</a></li>
+        <!-- hyperlink to the other page -->
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      </ul>
+
+    </nav>
+
+
+    <!-- Declarative binding -->
+    <div id="app">
+      <center><h1><b>Tutor List</b></h1></center>
+      <center>
+      <!-- binds the dropdown menu with search feature -->
+      <Dropdown class="menu" v-on:selected="select" v-on:filter="teacher" placeholder="Select a subject" :options="options" 
+      style="padding-bottom: 30px; margin-left: auto; margin-right: auto; width: 15%; text-align: center;">
+      </Dropdown> </center>
+
+      <div class="background"> 
+      <!-- binds the name of the tutor with the subjects chosen by the user -->
+      <h4>Tutor name: {{ selected.id }} </h4>
+      <div>
+      <!-- binds the images with the corresponding names, email, and subjects -->
+      <center><img v-bind:src="selected.src" /></center>
+      <br />
+
+      <!-- binds the email link and emit them to directly redirects the user to the email page -->
+    <p><b>E-mail address: </b><a :href="`mailto:${selected.email}`">Click here to send them an email </a> </p>
+      </div>
+      </div>
+    </div>
+    <script>
+      
+      Vue.use(Dropdown);
+      new Vue({
+        el: '#app',
+        data() {
+          return {
+            // content of the dropdown
+            // consists of subject names, tutor names, email address, and picture of them
+            options: [{
+                src: '../../images/teachers/1.png',
+                name: 'Mathematics',
+                id: 'Oriel Vinogradov',
+                email: 'voriel@deakin.edu.au'
+              },
+              {
+                src: '../../images/teachers/2.png',
+                name: 'English',
+                id: 'Roshan Singh',
+                email: 'ssingh@deakin.edu.au'
+              },
+              {
+                src: '../../images/teachers/3.png',
+                name: 'Social Studies',
+                id: 'Luja Abdullah',
+                email: 'labdullah@deakin.edu.au'
+              },
+              {
+                src: '../../images/teachers/4.png',
+                name: 'Science',
+                id: 'Nâdiya Fontaine',
+                email: 'nfontaine@deakin.edu.au'
+              },
+              {
+                src: '../../images/teachers/5.png',
+                name: 'Reading & Writing',
+                id: 'Zheng Qiaolian',
+                email: 'zqiaolian@deakin.edu.au'
+              },
+            ],
+            // default selected 
+            selected: {
+              src: '../../images/teachers/1.png',
+              name: 'Mathematics',
+              id: 'Oriel Vinogradov',
+              email: 'voriel@deakin.edu.au'
+            }
+          }
+        },
+        
+        methods: {
+          select(choices) {
+            this.selected = choices;
+          },
+        }
+      });
+
+    </script>
+    
+
+  </body>
+
+</html>
